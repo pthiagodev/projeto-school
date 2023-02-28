@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS Enrollment;
+
 DROP TABLE IF EXISTS User;
 
 CREATE TABLE User (
@@ -13,4 +15,13 @@ CREATE TABLE Course (
     code VARCHAR(10) NOT NULL UNIQUE,
     name VARCHAR(20) NOT NULL UNIQUE,
     description VARCHAR(500)
+);
+
+CREATE TABLE Enrollment (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT,
+  course_id BIGINT,
+  date TIMESTAMP WITHOUT TIME ZONE,
+  CONSTRAINT fk_user_enrollment FOREIGN KEY (user_id) REFERENCES User,
+  CONSTRAINT fk_course_enrollment FOREIGN KEY (course_id) REFERENCES Course
 );
