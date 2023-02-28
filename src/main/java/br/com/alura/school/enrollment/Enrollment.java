@@ -21,8 +21,8 @@ public class Enrollment {
     @ManyToOne
     private Course course;
 
-    @Column(name = "date", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private LocalDateTime dateofEnrollment;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private LocalDateTime date;
 
     @Deprecated
     protected Enrollment() {}
@@ -30,7 +30,7 @@ public class Enrollment {
     Enrollment(User user, Course course) {
         this.user = user;
         this.course = course;
-        this.dateofEnrollment = LocalDateTime.now();
+        this.date = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -46,7 +46,7 @@ public class Enrollment {
     }
 
     public LocalDateTime getDateofEnrollment() {
-        return dateofEnrollment;
+        return date;
     }
 
 }
