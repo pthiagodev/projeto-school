@@ -1,19 +1,22 @@
 package br.com.alura.school.enrollment;
 
+import br.com.alura.school.user.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.validation.constraints.Positive;
 
 public class EnrollmentResponse {
 
-    @JsonProperty
-    private final String email;
+    @JsonProperty(value = "email")
+    private String email;
 
-    @JsonProperty
-    private final Long enrollments;
+    @JsonProperty(value = "quantidade_matriculas")
+    private int enrollments;
 
-    EnrollmentResponse(String email, Long enrollments) {
-        this.email = email;
-        this.enrollments = enrollments;
+    EnrollmentResponse(User user) {
+        this.email = user.getEmail();
+        this.enrollments = user.getEnrollments().size();
+    }
+
+    public int getEnrollments() {
+        return enrollments;
     }
 }
