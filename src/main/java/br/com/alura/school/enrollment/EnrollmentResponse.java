@@ -1,18 +1,15 @@
 package br.com.alura.school.enrollment;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.Positive;
 
 public class EnrollmentResponse {
 
-    @NotBlank
-    @Email
+    @JsonProperty
     private final String email;
 
-    @NotNull
-    @Positive
+    @JsonProperty
     private final Long enrollments;
 
     EnrollmentResponse(String email, Long enrollments) {
